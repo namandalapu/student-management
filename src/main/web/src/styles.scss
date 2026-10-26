@@ -1,0 +1,183 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$azure-palette,
+    tertiary: mat.$blue-palette,
+  ),
+  typography: (
+    brand-family: Roboto,
+    plain-family: Roboto,
+  ),
+  density: (
+    scale: 0,
+  ),
+));
+
+html {
+  color-scheme: light;
+  @include mat.all-component-themes($theme);
+  // Lets color="primary" / color="warn" work on buttons under Material 3.
+  @include mat.color-variants-backwards-compatibility($theme);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background: #f5f7fa;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.back-link {
+  margin: 0 0 8px -12px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.search-field {
+  width: 100%;
+  max-width: 420px;
+}
+
+.row-link {
+  color: #0b57d0;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.actions-col {
+  width: 1%;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.muted {
+  color: #6b7280;
+}
+
+.full {
+  color: #b3261e;
+  font-weight: 500;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 48px 16px;
+  color: #6b7280;
+}
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: #fdecea;
+  color: #8c1d18;
+
+  .error-text {
+    flex: 1;
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 4px;
+  padding-top: 8px;
+
+  .span-2 {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+
+    .span-2 {
+      grid-column: span 1;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.detail-list {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 12px 32px;
+  padding: 24px;
+  margin: 0;
+
+  dt {
+    color: #6b7280;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.tab-body {
+  padding: 16px;
+}
+
+.enroll-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px;
+
+  .enroll-select {
+    flex: 1;
+    min-width: 240px;
+    max-width: 480px;
+  }
+}
+
+.snack-success {
+  --mdc-snackbar-container-color: #1e4620;
+}
+
+.snack-error {
+  --mdc-snackbar-container-color: #8c1d18;
+}

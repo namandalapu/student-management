@@ -1,0 +1,29 @@
+# Maven build output (includes the compiled Angular UI in target/classes/static)
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Node and npm downloaded by the Maven build
+.node/
+
+# H2 database files
+data/
+
+# IDEs and editors
+.claude/
+.idea/
+*.iws
+*.iml
+*.ipr
+.vscode/
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+*.log
+HELP.md

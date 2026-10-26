@@ -1,0 +1,24 @@
+.app-toolbar {
+  gap: 12px;
+  --mat-toolbar-container-background-color: #0b57d0;
+  --mat-toolbar-container-text-color: #fff;
+}
+
+.app-title {
+  font-weight: 500;
+}
+
+.app-tabs {
+  background: var(--mat-sys-surface, #fff);
+  padding: 0 16px;
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+
+.app-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
