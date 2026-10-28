@@ -13,7 +13,8 @@ import { Student } from '../core/models';
   standalone: true,
   imports: [RouterLink, MatTableModule, MatButtonModule, MatIconModule, MatChipsModule, MatTooltipModule],
   template: `
-    <table mat-table [dataSource]="students" class="mat-elevation-z1 full-width">
+    <div class="table-wrap">
+    <table mat-table [dataSource]="students" class="full-width">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let s">
@@ -56,6 +57,7 @@ import { Student } from '../core/models';
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns"></tr>
     </table>
+    </div>
   `,
 })
 export class StudentTableComponent {

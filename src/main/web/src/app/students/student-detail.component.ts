@@ -97,6 +97,7 @@ import { StudentStore } from './student.store';
               </div>
 
               @if (student.courses.length) {
+                <div class="table-scroll">
                 <table mat-table [dataSource]="student.courses" class="full-width">
                   <ng-container matColumnDef="code">
                     <th mat-header-cell *matHeaderCellDef>Code</th>
@@ -121,6 +122,7 @@ import { StudentStore } from './student.store';
                   <tr mat-header-row *matHeaderRowDef="courseColumns"></tr>
                   <tr mat-row *matRowDef="let row; columns: courseColumns"></tr>
                 </table>
+                </div>
               } @else {
                 <p class="muted">Not enrolled in any courses.</p>
               }

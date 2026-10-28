@@ -75,6 +75,7 @@ import { CourseStore } from './course.store';
             <div class="tab-body">
               @if (roster$ | async; as roster) {
                 @if (roster.length) {
+                  <div class="table-scroll">
                   <table mat-table [dataSource]="roster" class="full-width">
                     <ng-container matColumnDef="name">
                       <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -95,6 +96,7 @@ import { CourseStore } from './course.store';
                     <tr mat-header-row *matHeaderRowDef="rosterColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: rosterColumns"></tr>
                   </table>
+                  </div>
                 } @else {
                   <p class="muted">No students enrolled yet.</p>
                 }

@@ -34,3 +34,6 @@ app:
   seed:
     # Load sample students and courses on first start when the database is empty
     enabled: true
+  client:
+    # Where StudentManagementClient (the RestTemplate-based API client) sends requests
+    base-url: http://localhost:${server.port}

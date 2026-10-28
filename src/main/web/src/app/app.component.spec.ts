@@ -17,4 +17,12 @@ describe('AppComponent', () => {
     const links = Array.from(fixture.nativeElement.querySelectorAll('a[mat-tab-link]')) as HTMLElement[];
     expect(links.map((a) => a.textContent?.trim())).toEqual(['people Students', 'menu_book Courses']);
   });
+
+  it('renders sidebar links to both sections and the create forms', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const hrefs = Array.from(fixture.nativeElement.querySelectorAll('mat-sidenav a') as NodeListOf<HTMLAnchorElement>)
+      .map((a) => a.getAttribute('href'));
+    expect(hrefs).toEqual(['/students', '/students', '/courses', '/students/new', '/courses/new']);
+  });
 });

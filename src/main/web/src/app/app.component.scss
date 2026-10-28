@@ -1,16 +1,121 @@
-.app-toolbar {
+:host {
+  display: block;
+  height: 100%;
+}
+
+.shell {
+  height: 100%;
+  background: var(--app-bg);
+}
+
+// Sidebar: the one bold element. Everything in the content area stays quiet.
+.sidebar {
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  border-right: none;
+  border-radius: 0;
+  background: var(--app-sidebar);
+  color: var(--app-sidebar-text);
+
+  // Material list colors, retuned for the dark sidebar.
+  --mat-sidenav-container-background-color: var(--app-sidebar);
+  --mdc-list-list-item-label-text-color: var(--app-sidebar-text);
+  --mdc-list-list-item-leading-icon-color: var(--app-sidebar-muted);
+  --mdc-list-list-item-hover-label-text-color: #fff;
+  --mdc-list-list-item-hover-leading-icon-color: #fff;
+  --mdc-list-list-item-focus-label-text-color: #fff;
+  --mat-list-active-indicator-color: var(--app-sidebar-active);
+  --mat-list-active-indicator-shape: 8px;
+  --mdc-list-list-item-container-shape: 8px;
+
+  ::ng-deep .mat-drawer-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
   gap: 12px;
-  --mat-toolbar-container-background-color: #0b57d0;
+  padding: 24px 20px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
+  border-radius: 10px;
+  background: var(--app-sidebar-active);
+  color: #fff;
+}
+
+.brand-name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.side-nav {
+  padding: 0 12px;
+
+  .mat-mdc-list-item {
+    margin-bottom: 2px;
+  }
+
+  .mdc-list-item--activated {
+    --mdc-list-list-item-label-text-color: #fff;
+    --mdc-list-list-item-leading-icon-color: #fff;
+    font-weight: 600;
+  }
+}
+
+.side-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+  padding: 20px;
+  border-top: 1px solid var(--app-sidebar-rule);
+
+  .side-action {
+    justify-content: flex-start;
+    --mdc-outlined-button-label-text-color: var(--app-sidebar-text);
+    --mdc-outlined-button-outline-color: var(--app-sidebar-rule);
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.mobile-bar {
+  gap: 4px;
+  --mdc-icon-button-icon-color: #fff;
+  --mat-icon-button-state-layer-color: #fff;
+  --mat-toolbar-container-background-color: var(--app-sidebar);
   --mat-toolbar-container-text-color: #fff;
 }
 
-.app-title {
-  font-weight: 500;
-}
-
 .app-tabs {
-  background: var(--mat-sys-surface, #fff);
+  position: sticky;
+  top: 0;
+  z-index: 2;
   padding: 0 16px;
+  background: var(--app-surface);
+  border-bottom: 1px solid var(--app-rule);
+
+  @media (max-width: 959.98px) {
+    padding: 0;
+  }
 }
 
 .tab-icon {
@@ -19,6 +124,9 @@
 
 .app-content {
   max-width: 1100px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
+  padding: 28px 32px 56px;
+
+  @media (max-width: 959.98px) {
+    padding: 20px 16px 48px;
+  }
 }

@@ -5,12 +5,12 @@
 $theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
+    primary: mat.$green-palette,
+    tertiary: mat.$cyan-palette,
   ),
   typography: (
-    brand-family: Roboto,
-    plain-family: Roboto,
+    brand-family: "'Public Sans', 'Helvetica Neue', Arial, sans-serif",
+    plain-family: "'Public Sans', 'Helvetica Neue', Arial, sans-serif",
   ),
   density: (
     scale: 0,
@@ -24,6 +24,21 @@ html {
   @include mat.color-variants-backwards-compatibility($theme);
 }
 
+// Layout and color tokens: a deep registrar green for the sidebar, a cool neutral page.
+:root {
+  --app-sidebar: #15392f;
+  --app-sidebar-text: #d7e6de;
+  --app-sidebar-muted: #8fb3a2;
+  --app-sidebar-active: #24604c;
+  --app-sidebar-rule: rgba(215, 230, 222, 0.18);
+  --app-bg: #f2f5f3;
+  --app-surface: #ffffff;
+  --app-rule: #dde4e0;
+  --app-link: #1d6b52;
+  --app-ink: #1b2420;
+  --app-muted: #5f6d66;
+}
+
 html,
 body {
   height: 100%;
@@ -31,8 +46,44 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, 'Helvetica Neue', sans-serif;
-  background: #f5f7fa;
+  font-family: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--app-ink);
+  background: var(--app-bg);
+}
+
+// Plain white surfaces for tables, cards and dialogs (the green theme would tint them).
+html {
+  --mat-table-background-color: var(--app-surface);
+  --mdc-elevated-card-container-color: var(--app-surface);
+  --mdc-outlined-card-container-color: var(--app-surface);
+  --mat-tab-header-divider-color: var(--app-rule);
+}
+
+// Lists scroll sideways on narrow screens instead of running off the page.
+.table-wrap,
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  .mat-mdc-table {
+    min-width: 560px;
+  }
+}
+
+.table-wrap {
+  border: 1px solid var(--app-rule);
+  border-radius: 12px;
+  background: var(--app-surface);
+}
+
+.mat-mdc-card {
+  border: 1px solid var(--app-rule);
+  box-shadow: none !important;
+}
+
+:focus-visible {
+  outline: 2px solid var(--app-link);
+  outline-offset: 2px;
 }
 
 .page-header {
@@ -46,7 +97,8 @@ body {
   h1 {
     margin: 0;
     font-size: 1.75rem;
-    font-weight: 400;
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
 }
 
@@ -69,8 +121,8 @@ body {
 }
 
 .row-link {
-  color: #0b57d0;
-  font-weight: 500;
+  color: var(--app-link);
+  font-weight: 600;
   text-decoration: none;
 
   &:hover {
@@ -85,7 +137,7 @@ body {
 }
 
 .muted {
-  color: #6b7280;
+  color: var(--app-muted);
 }
 
 .full {
@@ -96,7 +148,7 @@ body {
 .empty-state {
   text-align: center;
   padding: 48px 16px;
-  color: #6b7280;
+  color: var(--app-muted);
 }
 
 .error-banner {
@@ -149,7 +201,7 @@ body {
   margin: 0;
 
   dt {
-    color: #6b7280;
+    color: var(--app-muted);
   }
 
   dd {

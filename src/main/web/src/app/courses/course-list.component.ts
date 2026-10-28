@@ -42,7 +42,8 @@ import { CourseStore } from './course.store';
 
     @if (store.courses$ | async; as courses) {
       @if (courses.length) {
-        <table mat-table [dataSource]="courses" class="mat-elevation-z1 full-width">
+        <div class="table-wrap">
+        <table mat-table [dataSource]="courses" class="full-width">
           <ng-container matColumnDef="code">
             <th mat-header-cell *matHeaderCellDef>Code</th>
             <td mat-cell *matCellDef="let c">
@@ -77,6 +78,7 @@ import { CourseStore } from './course.store';
           <tr mat-header-row *matHeaderRowDef="columns"></tr>
           <tr mat-row *matRowDef="let row; columns: columns"></tr>
         </table>
+        </div>
       } @else if (!(store.loading$ | async)) {
         <div class="empty-state"><p>No courses yet. Add the first one.</p></div>
       }
